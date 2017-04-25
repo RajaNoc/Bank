@@ -7,6 +7,7 @@ public class User {
 	public String email;
 	public String newPassword;
 	public String conformPassword;
+	//For one time password for registration confirmation
 	public int otp;
 	public String getUserName() {
 		return userName;
