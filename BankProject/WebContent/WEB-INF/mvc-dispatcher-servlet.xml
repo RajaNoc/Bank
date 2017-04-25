@@ -1,0 +1,111 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<context:component-scan
+		base-package="com.noc.loginservice.login.controller,
+	com.noc.userservice.controller,
+	com.noc.questionservice.controller" />
+
+	<mvc:resources mapping="/WebContent/**" location="/WebContent/" />
+
+	<mvc:default-servlet-handler />
+	<mvc:annotation-driven />
+
+	<mvc:view-controller path="/dashboard.html"
+		view-name="dashboard" />
+
+
+	<!-- qustion -->
+	<mvc:view-controller path="/question.html"
+		view-name="question" />
+	<mvc:view-controller path="addQuestion1.html"
+		view-name="addQuestion1" />
+
+	<mvc:view-controller path="/questionCategory.html"
+		view-name="questionCategory" />
+	<mvc:view-controller path="/questionComplexity.html"
+		view-name="questionComplexity" />
+	<mvc:view-controller path="/questionList.html"
+		view-name="questionList" />
+	<mvc:view-controller path="/questionSubCategory.html"
+		view-name="questionSubCategory" />
+	<mvc:view-controller path="/importQuestion.html"
+		view-name="importQuestion" />
+
+
+
+	<!-- exam -->
+	<mvc:view-controller path="/createQuestionPaper.htm"
+		view-name="createQuestionPaper" />
+	<mvc:view-controller path="/exams_newQuestionPaper.html"
+		view-name="exams_newQuestionPaper" />
+	<mvc:view-controller path="/exams_SceduledExam.html"
+		view-name="exams_SceduledExam" />
+	<mvc:view-controller path="/exams_SceduledNewExam.html"
+		view-name="exams_SceduledNewExam" />
+	<mvc:view-controller path="/exams.html" view-name="exams" />
+
+
+
+	<!-- Candidateflow -->
+	<mvc:view-controller path="/scheduledExam1.html"
+		view-name="scheduledExam1" />
+	<mvc:view-controller path="/scheduledExam2.html"
+		view-name="scheduledExam2" />
+	<mvc:view-controller path="/aptitudeTest1.htm"
+		view-name="aptitudeTest1" />
+	<mvc:view-controller path="/aptitudeTest2.htm"
+		view-name="aptitudeTest2" />
+	<mvc:view-controller path="/givenExam.htm"
+		view-name="givenExam" />
+	<mvc:view-controller path="/myProfile.htm"
+		view-name="myProfile" />
+	<mvc:view-controller path="/previewExam.htm"
+		view-name="previewExam" />
+	<mvc:view-controller path="/changePassword.htm"
+		view-name="changePassword" />
+
+	<!-- certificate -->
+	<mvc:view-controller path="/certificates.html"
+		view-name="certificates" />
+	<!-- settings -->
+	<mvc:view-controller path="/setting_Messages.html"
+		view-name="setting_Messages" />
+	<mvc:view-controller path="/setting_ShowResult.html"
+		view-name="setting_ShowResult" />
+	<mvc:view-controller path="/setting_TransactionHistory.html"
+		view-name="setting_TransactionHistory" />
+	<mvc:view-controller path="/settings.html"
+		view-name="settings" />
+
+	<mvc:view-controller path="/results.html"
+		view-name="results" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		<!-- setting maximum upload size -->
+		<property name="maxUploadSize" value="100000" />
+
+	</bean>
+	<bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+        <property name="prefixJson" value="false"/>
+        <property name="supportedMediaTypes" value="application/json"/>
+    </bean>
+	
+</beans>
